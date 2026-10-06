@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tactical Scrum</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="mast">
+  <div class="mast-in">
+    <div>
+      <h1 id="klass">Tactical Scrum</h1>
+      <p class="opline" id="op">OPERATION STEALTHY AGILE</p>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button type="button" role="tab" id="tabBoards" aria-selected="true">Boards</button>
+      <button type="button" role="tab" id="tabRefs" aria-selected="false">References</button>
+      <button type="button" role="tab" id="tabSetup" aria-selected="false">Setup</button>
+    </nav>
+  </div>
+</header>
+
+<main id="boardsView" class="layout">
+  <aside class="side" aria-label="Boards">
+    <h2>Boards</h2>
+    <ul id="boardList" class="boardlist"></ul>
+    <h2>New board</h2>
+    <label class="sr" for="newTpl">Template</label>
+    <select id="newTpl"></select>
+    <button type="button" class="btn" id="addBoard">Add from template</button>
+  </aside>
+  <section class="work" aria-live="polite">
+    <div id="toolbar" class="toolbar"></div>
+    <div id="cue" class="cue" hidden></div>
+    <div id="goalRow" class="goalrow" hidden></div>
+    <div id="visionHost" hidden></div>
+    <div id="zones" class="zones"></div>
+    <div id="calc" class="calc" hidden></div>
+    <div id="mil" class="mil" hidden></div>
+  </section>
+</main>
+
+<main id="refsView" class="refs" hidden>
+  <section class="card">
+    <h2>Glossary</h2>
+    <div class="field"><label for="gSearch">Search terms</label><input type="text" id="gSearch" placeholder="Type to filter, for example: sprint, intent, velocity"></div>
+    <div id="gList" class="glist"></div>
+  </section>
+  <section class="card">
+    <h2>CSM learning objectives</h2>
+    <p class="hint" id="objProg"></p>
+    <p class="hint">Tick each objective after you have covered it. Wording follows the Scrum Alliance list (updated January 2022); check the current version before you teach.</p>
+    <div id="objList"></div>
+  </section>
+</main>
+
+<main id="setupView" class="setup" hidden>
+  <section class="card wide">
+    <h2>Theme, planning process and mission</h2>
+    <p class="hint">Pick a theme and it loads that service's usual planning process and a starter mission. You can then change either one on its own, so a Navy theme can run an Army mission under MCPP.</p>
+    <div class="trio">
+      <div class="field"><label for="selTheme">Theme</label><select id="selTheme"></select><small id="themeNote"></small></div>
+      <div class="field"><label for="selProc">Planning process</label><select id="selProc"></select><small id="procNote"></small></div>
+      <div class="field"><label for="selMis">Mission</label><select id="selMis"></select><small id="misNote"></small></div>
+    </div>
+    <p class="hint">Changing the mission or the process rebuilds that one board only. Your other boards are not touched. All missions are fictional and unclassified.</p>
+  </section>
+  <section class="card">
+    <h2>Class</h2>
+    <div class="field"><label for="inKlass">Class name</label><input type="text" id="inKlass" maxlength="40"></div>
+    <div class="field"><label for="inOp">Operation name</label><input type="text" id="inOp" maxlength="40" class="caps"><small>Always shown in capital letters.</small></div>
+  </section>
+  <section class="card">
+    <h2>Work roles</h2>
+    <p class="hint">Change the name and the sticky-note color for each role. Role names appear in the Roles sort board and on notes.</p>
+    <div id="roleRows"></div>
+  </section>
+  <section class="card">
+    <h2>Data</h2>
+    <p class="hint" id="dataNote"></p>
+    <div class="row">
+      <button type="button" class="btn" id="btnExport">Export to file</button>
+      <button type="button" class="btn alt" id="btnImport">Import from file</button>
+      <button type="button" class="btn alt danger" id="btnReset">Reset everything</button>
+    </div>
+    <p class="hint" id="setMsg" role="status"></p>
+  </section>
+</main>
+
+<script src="templates.js"></script>
+<script src="themes.js"></script>
+<script src="processes.js"></script>
+<script src="missions.js"></script>
+<script src="refs.js"></script>
+<script src="app.js"></script>
+<footer class="foot">Training prototype. Not an official product of the Department of Defense or any military service. Colors only: no seals, crests or logos are used.</footer>
+</body>
+</html>

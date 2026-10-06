@@ -1,0 +1,90 @@
+/* Reference data: glossary (own wording, aligned to the 2020 Scrum Guide) and the CSM learning objectives.
+   Objectives are listed as published by Scrum Alliance (document updated Jan 2022). Check the current list before teaching.
+   `b` = ids of the board templates where the objective is practiced in this app. */
+(function () {
+  'use strict';
+  window.GLOSSARY = [
+    ['Scrum', 'A lightweight framework that helps people solve complex problems by delivering value in short cycles and learning as they go.', ['framework']],
+    ['Empiricism', 'Deciding from what you observe, not from what you predict. Built on transparency, inspection and adaptation.', ['vuca']],
+    ['Transparency', 'The work and its status are visible to everyone who needs to know, and honest.', ['vuca']],
+    ['Inspection', 'Checking the work and progress often enough to catch problems early.', ['vuca']],
+    ['Adaptation', 'Changing the plan or the process when inspection shows something is off.', ['vuca']],
+    ['Scrum values', 'Commitment, Focus, Openness, Respect and Courage.', ['values']],
+    ['Scrum Team', 'One Scrum Master, one Product Owner and Developers. Up to about ten people, no sub-teams, one Product Goal at a time.', ['roles', 'framework']],
+    ['Product Owner', 'Accountable for maximizing the value of the product. Owns the Product Backlog and its order. One person, not a committee.', ['roles']],
+    ['Scrum Master', 'Accountable for the team\'s effectiveness and for Scrum being understood and used. A true leader who serves the team, not a manager of it.', ['roles']],
+    ['Developers', 'The people who do the work of creating a usable Increment each Sprint. Self-managing, including how they turn items into work.', ['roles']],
+    ['Self-managing', 'The team decides who does what, when and how, inside the Sprint Goal.', ['roles', 'hats']],
+    ['Stakeholder', 'Someone with an interest in the product who is not on the Scrum Team. They give input at the Sprint Review and through the Product Owner.', ['sprint']],
+    ['Sprint', 'A fixed timebox of one month or less that holds all the other events. The container for everything.', ['sprint']],
+    ['Product Goal', 'The long-term objective for the product. One at a time. The Product Backlog serves it.', ['vision', 'agenda']],
+    ['Product Backlog', 'An ordered list of what might be needed. The single source of work for the Scrum Team.', ['moscow', 'sprint']],
+    ['Product Backlog item (PBI)', 'One entry in the Product Backlog. Often written as a user story.', ['moscow']],
+    ['Backlog refinement', 'Ongoing work to break down, clarify and size items so they are ready for planning. Not a formal event.', ['estimate', 'dord']],
+    ['Sprint Planning', 'The event that starts the Sprint. Covers why (Sprint Goal), what (items) and how (plan).', ['sprint']],
+    ['Sprint Goal', 'The single objective for the Sprint. A commitment for the Sprint Backlog.', ['sprint']],
+    ['Sprint Backlog', 'The Sprint Goal, the items chosen for the Sprint and the plan to deliver them. Owned by the Developers.', ['sprint']],
+    ['Daily Scrum', 'A 15-minute event for the Developers to inspect progress toward the Sprint Goal and adapt the plan. Not a status report for a manager.', ['sprint']],
+    ['Sprint Review', 'The event near the end of the Sprint where the team and stakeholders inspect the outcome and decide what to adapt.', ['sprint']],
+    ['Sprint Retrospective', 'The event that closes the Sprint. The team inspects how it worked and plans improvements.', ['retro']],
+    ['Increment', 'A concrete step toward the Product Goal that meets the Definition of Done. Usable.', ['sprint']],
+    ['Definition of Done', 'The shared standard an item must meet to count as finished. No partial credit.', ['dord']],
+    ['Definition of Ready', 'A team agreement about when an item is clear enough to start. Common in practice, but not in the Scrum Guide.', ['dord']],
+    ['Velocity', 'How many points of Done work a team completes in a Sprint. Used to forecast, not to judge.', ['estimate']],
+    ['Story points', 'A relative measure of size that mixes effort, complexity and uncertainty. Not hours.', ['estimate']],
+    ['Planning poker', 'A way to estimate by having everyone reveal a size at once, then discuss the differences.', ['estimate']],
+    ['MoSCoW', 'Must have, Should have, Could have, Won\'t have (this time). A prioritization aid.', ['moscow']],
+    ['User story', 'A short description of a need from the user\'s point of view. Often "As a... I want... so that...".', ['moscow']],
+    ['Acceptance criteria', 'Conditions a specific item must meet. Different from the Definition of Done, which applies to everything.', ['dord']],
+    ['Impediment', 'Anything that blocks or slows the team. The Scrum Master helps get it removed.', ['impediments']],
+    ['Technical debt', 'The cost of shortcuts that make future work slower or riskier.', ['dord']],
+    ['Burn down chart', 'A chart of remaining work against time. Shows trend. An information radiator.', ['sprint']],
+    ['Information radiator', 'A visible display that tells anyone passing by how the work is going.', ['sprint']],
+    ['Timebox', 'A fixed maximum time for an activity. The clock is fixed; scope flexes.', ['sprint']],
+    ['Cancel a Sprint', 'Only the Product Owner can, and only if the Sprint Goal becomes obsolete.', ['roles']],
+    ['Working agreement', 'The team\'s own written norms for how it works together.', ['agreements']],
+    ['Retrospective prime directive', 'Assume everyone did the best job they could, given what they knew at the time.', ['retro']],
+    ['Multi-hatting', 'One person holding more than one Scrum accountability. Causes conflicts of interest.', ['hats']],
+    ['MDMP', 'Military Decision Making Process. The Army\'s seven-step staff planning method.', []],
+    ['JPP', 'Joint Planning Process. Seven steps, used by joint headquarters.', []],
+    ['COA', 'Course of action. One way to accomplish the mission.', []],
+    ['Commander\'s intent', 'A short statement of purpose and desired end state that guides initiative when plans change.', ['vision']],
+    ['AAR', 'After action review. The military habit that matches a Retrospective.', ['retro']],
+    ['FRAGORD', 'Fragmentary order. A short order that changes part of an existing one.', []]
+  ].map(function (g) { return { term: g[0], def: g[1], b: g[2] }; });
+
+  window.OBJECTIVES = [
+    { g: 'Domain 1: Scrum', h: 'The Scrum Team', items: [
+      ['1.1', 'Describe Scrum Team responsibilities and accountabilities', ['roles', 'framework']],
+      ['1.2', 'Describe Scrum Master responsibilities and accountabilities', ['roles']],
+      ['1.3', 'Describe Developer responsibilities and accountabilities', ['roles']],
+      ['1.4', 'Describe Product Owner responsibilities and accountabilities', ['roles']],
+      ['1.5', 'Discuss why the Product Owner must be a single person, not a group', ['roles']],
+      ['1.6', 'Discuss how the Product Owner keeps authority while collaborating', ['roles']] ] },
+    { g: 'Domain 1: Scrum', h: 'Scrum events and activities', items: [
+      ['1.7', 'Identify inspection and adaptation examples at each Scrum event', ['framework', 'vuca']],
+      ['1.8', 'Perform Sprint Planning', ['sprint']],
+      ['1.9', 'Perform a Sprint Review', ['sprint']],
+      ['1.10', 'Perform a Sprint Retrospective', ['retro']],
+      ['1.11', 'Describe the effects of skipping retrospectives', ['retro']],
+      ['1.12', 'Explain how Developers conduct Daily Scrums', ['sprint']],
+      ['1.13', 'Discuss differences between Daily Scrums and status meetings', ['sprint']],
+      ['1.14', 'Explain conditions for ending a Sprint early', ['roles']],
+      ['1.15', 'Explain the advantages of a strong Definition of Done', ['dord']],
+      ['1.16', 'Outline ways to create a Definition of Done', ['dord']] ] },
+    { g: 'Domain 2: Scrum Master core competencies', h: 'Facilitation', items: [
+      ['2.1', 'Describe facilitation situations for teams and organizations', ['agreements', 'retro']],
+      ['2.2', 'Demonstrate group decision-making facilitation techniques', ['principles', 'values', 'moscow']],
+      ['2.3', 'Discuss differences among facilitating, teaching, mentoring and coaching', ['hats']] ] },
+    { g: 'Domain 3: Service to team, Product Owner and organization', h: 'Service', items: [
+      ['3.1', 'Describe Scrum Master leadership scenarios', ['hats']],
+      ['3.2', 'Explain the impacts of technical debt', ['dord']],
+      ['3.3', 'List development practices for quality Increments and debt reduction', ['dord']],
+      ['3.4', 'Explain how the Scrum Master supports Product Owners', ['roles', 'moscow']],
+      ['3.5', 'Describe organizational impediments that affect teams', ['impediments']],
+      ['3.6', 'Discuss how the Scrum Master assists with impediments', ['impediments']],
+      ['3.7', 'Apply impediment resolution techniques', ['impediments']],
+      ['3.8', 'Summarize organizational design changes from adopting Scrum', ['hats']],
+      ['3.9', 'Discuss why Scrum has no project manager', ['hats', 'roles']] ] }
+  ];
+})();

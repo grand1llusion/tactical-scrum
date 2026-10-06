@@ -1,0 +1,27 @@
+{
+  "name": "tactical-scrum",
+  "productName": "Tactical Scrum",
+  "version": "0.2.0",
+  "description": "Tactical Scrum: Scrum training boards with a military crosswalk",
+  "main": "main.js",
+  "author": "Bradley",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win portable",
+    "dist:mac": "electron-builder --mac dmg"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "local.tacticalscrum.app",
+    "productName": "Tactical Scrum",
+    "files": ["main.js", "preload.js", "src/**/*", "package.json"],
+    "directories": { "output": "dist" },
+    "win": { "target": "portable", "artifactName": "Tactical-Scrum-${version}-portable.exe" },
+    "mac": { "target": "dmg", "category": "public.app-category.education", "artifactName": "Tactical-Scrum-${version}.dmg" }
+  }
+}
