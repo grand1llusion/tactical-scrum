@@ -62,14 +62,15 @@
   function makeBoard(tplId) {
     var t = TPL.filter(function (x) { return x.id === tplId; })[0] || TPL[TPL.length - 1];
     return {
-      id: uid('b'), tpl: t.id, title: t.name, goal: '', revealed: false, fields: {},
+      id: uid('b'), tpl: t.id, title: t.name, goal: '', productGoal: '', revealed: false, fields: {},
       zones: clone(t.zones),
       notes: t.notes.map(function (n) { return { id: uid(), text: n.t, zone: n.z, role: n.r || '', dots: 0, key: n.k || '' }; })
     };
   }
   function makeMissionBoard(mid) {
     var m = byId(MIS, mid) || MIS[0], b = makeBoard('sprint');
-    b.title = 'Mission: ' + m.name; b.goal = m.goal; b.mission = m.id;
+    // The mission's goal is Product Goal sized. The Sprint Goal starts empty: the team writes it in Sprint Planning.
+    b.title = 'Mission: ' + m.name; b.productGoal = m.goal; b.goal = ''; b.mission = m.id;
     b.notes = m.tasks.map(function (t) { return { id: uid(), text: t, zone: 'bl', role: '', dots: 0, key: '' }; });
     return b;
   }
@@ -97,7 +98,7 @@
     if (byId(PROCS, raw.processId)) { s.processId = raw.processId; }
     if (byId(MIS, raw.missionId)) { s.missionId = raw.missionId; }
     s.covered = {};
-    if (raw.covered && typeof raw.covered === 'object') { Object.keys(raw.covered).slice(0, 60).forEach(function (k) { if (raw.covered[k] === true) { s.covered[str(k, '', 8)] = true; } }); }
+    if (raw.covered && typeof raw.covered === 'object') { Object.keys(raw.covered).slice(0, 120).forEach(function (k) { if (raw.covered[k] === true) { s.covered[str(k, '', 8)] = true; } }); }
     s.crosswalk = raw.crosswalk === true;
     ROLE_KEYS.forEach(function (k) {
       var r = raw.roles && raw.roles[k];
@@ -111,6 +112,13 @@
         base.goal = str(b && b.goal, '', 120);
         base.revealed = !!(b && b.revealed);
         base.mission = b && byId(MIS, b.mission) ? b.mission : '';
+        base.productGoal = str(b && b.productGoal, '', 120);
+        if (base.mission && !(b && typeof b.productGoal === 'string')) {
+          // Mission boards saved by v0.2.0 kept the mission goal in the Sprint Goal row. Move it up.
+          var mm = byId(MIS, base.mission);
+          base.productGoal = mm.goal;
+          if (base.goal === mm.goal) { base.goal = ''; }
+        }
         base.process = b && byId(PROCS, b.process) ? b.process : '';
         base.fields = {};
         if (b && b.fields && typeof b.fields === 'object') {
@@ -121,6 +129,8 @@
             var t0 = base.zones[i] || {};
             var o = clone(t0);
             o.id = str(z.id, o.id || 'z' + i, 20); o.name = str(z.name, o.name || 'Zone', 40); o.sub = str(z.sub, o.sub || '', 80);
+            // v0.2.0 saved a wrong dot-vote hint ("Shift-click ... to add"); replace it with the template's current text.
+            if (/^Shift-click/.test(o.sub) && t0.sub) { o.sub = t0.sub; }
             return o;
           });
         }
@@ -281,7 +291,7 @@
       'aria-pressed': S.crosswalk ? 'true' : 'false', onclick: function () { S.crosswalk = !S.crosswalk; save(); renderBoards(); } }));
     tb.appendChild(timerWidget());
     tb.appendChild(twoStep('reset' + b.id, 'Reset board', function () {
-      var f = b.mission ? makeMissionBoard(b.mission) : b.process ? makeProcessBoard(b.process) : makeBoard(b.tpl); b.zones = f.zones; b.notes = f.notes; b.revealed = false; b.fields = {}; b.goal = f.goal; save(); renderBoards();
+      var f = b.mission ? makeMissionBoard(b.mission) : b.process ? makeProcessBoard(b.process) : makeBoard(b.tpl); b.zones = f.zones; b.notes = f.notes; b.revealed = false; b.fields = {}; b.goal = f.goal; b.productGoal = f.productGoal; save(); renderBoards();
     }));
     if (S.boards.length > 1) {
       tb.appendChild(twoStep('del' + b.id, 'Delete board', function () {
@@ -301,13 +311,20 @@
     if (p) { c.appendChild(el('div', null, [el('b', { text: p.name + ': ' }), document.createTextNode(p.note)])); }
     if (t.cue) { c.appendChild(el('div', null, [el('b', { text: 'Facilitator cue: ' }), document.createTextNode(t.cue)])); }
   }
+  function goalLine(id, label, key, placeholder) {
+    var b = board();
+    var inp = el('input', { type: 'text', id: id, value: b[key] || '', maxlength: '120', placeholder: placeholder });
+    inp.addEventListener('input', function () { b[key] = inp.value; save(); });
+    return el('div', { class: 'gl' }, [el('label', { for: id, text: label }), inp]);
+  }
   function renderGoal() {
     var g = $('goalRow'), b = board(), t = tplOf(b);
     g.hidden = !t.goal; g.textContent = '';
     if (!t.goal) { return; }
-    var inp = el('input', { type: 'text', id: 'goalIn', value: b.goal, maxlength: '120', placeholder: 'One sentence: what is this Sprint for?' });
-    inp.addEventListener('input', function () { b.goal = inp.value; save(); });
-    g.appendChild(el('label', { for: 'goalIn', text: 'Sprint Goal' })); g.appendChild(inp);
+    // Mission boards carry both commitments: the Product Goal (for the Product Backlog) and the Sprint Goal (for the Sprint Backlog).
+    g.classList.toggle('two', !!b.mission);
+    if (b.mission) { g.appendChild(goalLine('pgoalIn', 'Product Goal', 'productGoal', 'The long-term objective. One at a time.')); }
+    g.appendChild(goalLine('goalIn', 'Sprint Goal', 'goal', 'One sentence: what is this Sprint for?'));
   }
 
   /* ---------- vision form ---------- */
@@ -597,11 +614,12 @@
       host.appendChild(el('div', { class: 'objh', text: grp.h }));
       grp.items.forEach(function (it) {
         total++; if (S.covered[it[0]]) { done++; }
+        var label = it[0].indexOf('SF') === 0 ? 'SF ' + it[0].slice(2) : 'CSM ' + it[0];
         var cb = el('input', { type: 'checkbox', id: 'ob' + it[0] });
         cb.checked = !!S.covered[it[0]];
         cb.addEventListener('change', function () { if (cb.checked) { S.covered[it[0]] = true; } else { delete S.covered[it[0]]; } save(); renderObjectives(); });
         host.appendChild(el('div', { class: 'objrow' }, [
-          el('label', { for: 'ob' + it[0] }, [cb, el('span', { class: 'no', text: it[0] }), el('span', { text: it[1] })])
+          el('label', { for: 'ob' + it[0] }, [cb, el('span', { class: 'no', text: label }), el('span', { text: it[1] })])
         ].concat(goButtons(it[2]))));
       });
     });

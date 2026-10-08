@@ -62,6 +62,9 @@ select,input[type=text],input[type=number]{font:inherit;padding:8px 9px;border:2
 .cue b{color:var(--ink)}
 .goalrow{display:flex;gap:10px;align-items:center}
 .goalrow label{font-weight:700;white-space:nowrap}
+.goalrow .gl{display:flex;gap:10px;align-items:center;flex:1 1 auto;min-width:0}
+.goalrow.two{flex-direction:column;align-items:stretch;gap:6px}
+.goalrow.two .gl label{min-width:7.5em}
 
 .zones{display:grid;gap:10px;align-items:start;grid-auto-flow:column;grid-auto-columns:minmax(200px,1fr);overflow-x:auto;padding-bottom:6px}
 .zone{background:var(--zone);border:2px solid var(--line);min-height:240px;display:flex;flex-direction:column}
@@ -131,7 +134,7 @@ select,input[type=text],input[type=number]{font:inherit;padding:8px 9px;border:2
 .objrow{display:flex;gap:8px;align-items:baseline;padding:4px 0;flex-wrap:wrap}
 .objrow label{display:flex;gap:8px;align-items:baseline;flex:1 1 260px;cursor:pointer}
 .objrow input{width:auto;accent-color:var(--focus)}
-.objrow .no{font-family:var(--mono);font-size:.82rem;min-width:2.6em}
+.objrow .no{font-family:var(--mono);font-size:.82rem;min-width:6.2em;white-space:nowrap}
 .mil h4{font-family:var(--display);font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin:14px 0 6px;font-size:1.05rem}
 .mil .pill{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:.72rem;padding:1px 7px;border:2px solid var(--ink)}
 

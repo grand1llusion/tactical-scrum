@@ -58,7 +58,7 @@
       desc: 'Dot-vote where each pillar would be hardest at work.',
       cue: 'Give each person three dots. Ask: "Where would this be hardest in your unit?" Then ask why the top item scored highest.',
       vote: true,
-      zones: [Z('v', 'Where is it hardest at work?', 'Shift-click a note to add a dot, right-click to remove one')],
+      zones: [Z('v', 'Where is it hardest at work?', 'Click + dot to add a dot; right-click or shift-click to remove one')],
       notes: [
         { t: 'Transparency: everyone sees the same real status', z: 'v' },
         { t: 'Inspection: we check progress often enough to catch problems', z: 'v' },
@@ -94,7 +94,7 @@
       desc: 'Two dots on the five values plus a "why" note.',
       cue: 'Ask for two dots. Add a "why" note for the top one. Ask for a moment from their career where it was missing.',
       vote: true,
-      zones: [Z('v', 'Values', 'Shift-click for a dot, right-click to remove'), Z('why', 'Why', 'One sentence per value')],
+      zones: [Z('v', 'Values', 'Click + dot to add; right-click or shift-click to remove'), Z('why', 'Why', 'One sentence per value')],
       notes: [
         { t: 'Commitment', z: 'v' }, { t: 'Focus', z: 'v' }, { t: 'Openness', z: 'v' }, { t: 'Respect', z: 'v' }, { t: 'Courage', z: 'v' }
       ],
