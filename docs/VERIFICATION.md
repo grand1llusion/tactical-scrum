@@ -16,4 +16,5 @@ Nothing here should be taught as fact until its status is Confirmed.
 | Theme palettes | `src/themes.js` | Verify | Approximated from brand colors, not sampled from live sites |
 | Glossary wording | `src/refs.js` | Own wording | Compare with the current Scrum Guide |
 | CSM learning objectives | `src/refs.js` | Verify | Follows the Scrum Alliance list updated January 2022 |
+| Scrum Foundations learning objectives | `src/refs.js` | Verify | Follows the Scrum Alliance list updated January 2022. Paraphrased; counts kept |
 | Missions | `src/missions.js` | Fictional | Replace with your own. Keep unclassified |

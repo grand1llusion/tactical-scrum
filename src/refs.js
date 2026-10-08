@@ -1,5 +1,7 @@
-/* Reference data: glossary (own wording, aligned to the 2020 Scrum Guide) and the CSM learning objectives.
-   Objectives are listed as published by Scrum Alliance (document updated Jan 2022). Check the current list before teaching.
+/* Reference data: glossary (own wording, aligned to the 2020 Scrum Guide) and the learning objectives.
+   Two Scrum Alliance lists, both dated January 2022: Scrum Foundations (ids prefixed "SF") and CSM (plain ids, kept
+   as they were so saved ticks still load). A qualifying course must cover both. Wording is paraphrased; the
+   "at least N" counts are kept. Check the current lists before teaching.
    `b` = ids of the board templates where the objective is practiced in this app. */
 (function () {
   'use strict';
@@ -54,14 +56,42 @@
   ].map(function (g) { return { term: g[0], def: g[1], b: g[2] }; });
 
   window.OBJECTIVES = [
-    { g: 'Domain 1: Scrum', h: 'The Scrum Team', items: [
+    { g: 'Scrum Foundations', h: 'Scrum theory', items: [
+      ['SF1.1', 'Define Scrum', ['framework']],
+      ['SF1.2', 'List the five Scrum values', ['values']],
+      ['SF1.3', 'Define empiricism', ['vuca']],
+      ['SF1.4', 'List the three empirical pillars', ['vuca']],
+      ['SF1.5', 'List at least three benefits of an iterative, incremental approach', ['agenda', 'vuca']],
+      ['SF1.6', 'Describe at least two disadvantages of implementing only part of Scrum', ['framework']],
+      ['SF1.7', 'Describe how Scrum aligns with the Agile Manifesto values and principles', ['principles']] ] },
+    { g: 'Scrum Foundations', h: 'The Scrum Team', items: [
+      ['SF2.1', 'Illustrate how the Product Owner, Developers and Scrum Master interact to deliver Increments in a Sprint', ['roles', 'sprint']],
+      ['SF2.2', 'Identify at least three benefits of a cross-functional, self-managing Scrum Team', ['roles', 'hats']] ] },
+    { g: 'Scrum Foundations', h: 'Scrum events and activities', items: [
+      ['SF3.1', 'Explain at least three benefits of a timebox', ['sprint', 'agenda']],
+      ['SF3.2', 'Define the purpose and maximum length of a Sprint', ['sprint', 'framework']],
+      ['SF3.3', 'Explain how to choose a suitable Sprint length', ['sprint']],
+      ['SF3.4', 'Define each Scrum event: purpose, participants, sequence and maximum timebox', ['framework']],
+      ['SF3.5', 'List at least three activities that can happen in Product Backlog refinement', ['estimate', 'moscow', 'dord']],
+      ['SF3.6', 'Give at least two reasons the team spends time on refinement', ['dord', 'estimate']] ] },
+    { g: 'Scrum Foundations', h: 'Scrum artifacts and commitments', items: [
+      ['SF4.1', 'Define the purpose of the Product Backlog, Sprint Backlog and Increment, with at least three attributes each', ['framework']],
+      ['SF4.2', 'Explain why the Product Backlog is emergent', ['moscow']],
+      ['SF4.3', 'List at least three attributes of a Product Backlog item', ['estimate', 'moscow']],
+      ['SF4.4', 'Discuss how the Sprint Backlog can change without endangering the Sprint Goal', ['sprint']],
+      ['SF4.5', 'Explain how more than one Increment can be created in a Sprint', ['sprint']],
+      ['SF4.6', 'Describe the Product Goal, Sprint Goal and Definition of Done as the commitments for the three artifacts', ['framework']],
+      ['SF4.7', 'Describe why the Sprint Goal does not change during a Sprint', ['sprint']],
+      ['SF4.8', 'Explain how the Definition of Done evolves over time', ['dord', 'retro']],
+      ['SF4.9', 'Give at least two reasons teams on one Product Backlog share a Definition of Done', ['dord']] ] },
+    { g: 'CSM Domain 1: Scrum', h: 'The Scrum Team', items: [
       ['1.1', 'Describe Scrum Team responsibilities and accountabilities', ['roles', 'framework']],
       ['1.2', 'Describe Scrum Master responsibilities and accountabilities', ['roles']],
       ['1.3', 'Describe Developer responsibilities and accountabilities', ['roles']],
       ['1.4', 'Describe Product Owner responsibilities and accountabilities', ['roles']],
       ['1.5', 'Discuss why the Product Owner must be a single person, not a group', ['roles']],
       ['1.6', 'Discuss how the Product Owner keeps authority while collaborating', ['roles']] ] },
-    { g: 'Domain 1: Scrum', h: 'Scrum events and activities', items: [
+    { g: 'CSM Domain 1: Scrum', h: 'Scrum events and activities', items: [
       ['1.7', 'Identify inspection and adaptation examples at each Scrum event', ['framework', 'vuca']],
       ['1.8', 'Perform Sprint Planning', ['sprint']],
       ['1.9', 'Perform a Sprint Review', ['sprint']],
@@ -72,11 +102,11 @@
       ['1.14', 'Explain conditions for ending a Sprint early', ['roles']],
       ['1.15', 'Explain the advantages of a strong Definition of Done', ['dord']],
       ['1.16', 'Outline ways to create a Definition of Done', ['dord']] ] },
-    { g: 'Domain 2: Scrum Master core competencies', h: 'Facilitation', items: [
+    { g: 'CSM Domain 2: Scrum Master core competencies', h: 'Facilitation', items: [
       ['2.1', 'Describe facilitation situations for teams and organizations', ['agreements', 'retro']],
       ['2.2', 'Demonstrate group decision-making facilitation techniques', ['principles', 'values', 'moscow']],
       ['2.3', 'Discuss differences among facilitating, teaching, mentoring and coaching', ['hats']] ] },
-    { g: 'Domain 3: Service to team, Product Owner and organization', h: 'Service', items: [
+    { g: 'CSM Domain 3: Service to team, Product Owner and organization', h: 'Service', items: [
       ['3.1', 'Describe Scrum Master leadership scenarios', ['hats']],
       ['3.2', 'Explain the impacts of technical debt', ['dord']],
       ['3.3', 'List development practices for quality Increments and debt reduction', ['dord']],

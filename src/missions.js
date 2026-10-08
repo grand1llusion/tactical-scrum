@@ -1,5 +1,6 @@
 /* Starter missions. Every one is fictional and unclassified. Places, units and names are invented.
-   Each is a baseline with deliberate holes: edit freely. Cyber flavor only in the USCYBERCOM mission. */
+   Each is a baseline with deliberate holes: edit freely. Cyber flavor only in the USCYBERCOM mission.
+   `goal` is the mission's Product Goal; it fills the Product Goal row on the mission board. */
 (function () {
   'use strict';
   window.MISSIONS = [
