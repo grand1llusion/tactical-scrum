@@ -1,6 +1,7 @@
 /* Starter missions. Every one is fictional and unclassified. Places, units and names are invented.
    Each is a baseline with deliberate holes: edit freely. Cyber flavor only in the USCYBERCOM mission.
-   `goal` is the mission's Product Goal; it fills the Product Goal row on the mission board. */
+   `goal` is the mission's Product Goal; it fills the Product Goal row on the mission board (keep it to 120 characters).
+   Civilian missions are for non-military classes: run them with the military crosswalk off. */
 (function () {
   'use strict';
   window.MISSIONS = [
@@ -43,6 +44,16 @@
       scenario: 'Defenders suspect an intruder has access to a fictional logistics network ahead of an exercise. The team must confirm it, contain it and report the risk. Everything here is invented.',
       goal: 'Confirm or rule out the access and contain it within 10 days.',
       dod: ['Findings tied to evidence', 'Containment options reviewed by the commander', 'Authorities check complete', 'Partners informed'],
-      tasks: ['Hunt in logs for indicators', 'Validate the asset inventory', 'Coordinate with partner cyber teams', 'Prepare containment options', 'Complete the authorities review', 'Brief the commander on risk', 'Plan restoration'] }
+      tasks: ['Hunt in logs for indicators', 'Validate the asset inventory', 'Coordinate with partner cyber teams', 'Prepare containment options', 'Complete the authorities review', 'Brief the commander on risk', 'Plan restoration'] },
+    { id: 'civcar', service: 'Civilian', name: 'Buy the family car', op: 'Family Car Search',
+      scenario: 'The family minivan failed inspection and its registration runs out in four weeks. The household needs a car that fits two adults, three kids and a large dog on a fixed budget. Everything here is invented.',
+      goal: 'Buy a safe, reliable car that fits the whole family and the budget within four weeks.',
+      dod: ['Every price and fact has a source', 'Checked against our must-haves', 'A second household member reviewed it', "The whole family agrees it's the one"],
+      tasks: ['Set the budget and get financing pre-approved', 'List must-have and nice-to-have features', 'Research cars that fit', 'Check reliability and safety', 'Test drive the top picks', 'Get insurance quotes', 'Negotiate and buy'] },
+    { id: 'civmove', service: 'Civilian', name: 'Move to a new city for a new job', op: 'New City Move',
+      scenario: 'One adult in the household accepted a job in a new city that starts in ten weeks. The household must choose a neighborhood and buy a home for two adults, two kids, a dog and a full-time home office. The team picks the city; everything else is invented.',
+      goal: 'Move the household into a home in the new city that meets our must-haves and budget before the new job starts.',
+      dod: ['Every fact has a source and a date', 'Checked against our must-haves and budget', 'A second household member reviewed it', 'The whole household signs off on the home'],
+      tasks: ['Set the housing budget and get mortgage pre-approval', 'List must-haves for the home and the neighborhood', 'Choose the neighborhood', 'Tour homes', 'Get the home inspected', 'Book movers', 'End the current lease', 'Enroll the kids in school'] }
   ];
 })();

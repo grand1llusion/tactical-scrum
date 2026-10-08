@@ -24,7 +24,7 @@ Windows: `%APPDATA%\Tactical Scrum\tactical-scrum.json`. Setup > Export to file 
 ## What v0.2 adds
 - Setup: choose a Theme (default coyote, Army, Navy, Marine Corps, Air Force, Space Force, Coast Guard, USCYBERCOM). Each loads its usual planning process and a starter mission. Theme, planning process and mission can then be changed independently.
 - Planning process panel at the bottom of every board (turn on "Military crosswalk"), plus a Planning process board.
-- A Mission board with a brief, Product Goal and Definition of Done.
+- A Mission board with a brief, Product Goal and Definition of Done. Eight service missions plus two civilian ones (buying a family car, moving to a new city).
 - References tab: searchable glossary and the Scrum Foundations and CSM learning objectives with a coverage checklist.
 - Colors only. No seals, crests or logos.
 
