@@ -4,6 +4,7 @@ All notable changes to Tactical Scrum. Versions follow `package.json`.
 
 ## [Unreleased]
 ### Added
+- Two civilian missions for non-military classes: "Buy the family car" (simple) and "Move to a new city for a new job" (moderate). Pick them under Setup > Mission and keep the military crosswalk off. Each has a facilitator mission pack in the course notes.
 - References tab: the 24 Scrum Foundations learning objectives (January 2022), shown as SF 1.1 to SF 4.9 with board links. A qualifying course must cover these as well as the CSM objectives. CSM objectives are now labeled CSM 1.1 and so on; saved ticks still load.
 - Mission board: a Product Goal row above the Sprint Goal row. The mission's goal fills the Product Goal; the Sprint Goal starts empty for Sprint Planning. Mission boards saved by 0.2.0 move their goal up automatically, unless the Sprint Goal was already changed.
 
