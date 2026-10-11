@@ -173,6 +173,7 @@
     color = color || '#2b2118';
     const key = str + '|' + color + '|' + (shadow || '');
     let c = textCache[key];
+    if (!c && Object.keys(textCache).length > 1500) for (const k in textCache) delete textCache[k];
     if (!c) {
       const w = Math.ceil(str.length * 5.2) + 2, h = 11;
       const [t, tx] = mk(w, h);
@@ -184,7 +185,6 @@
       tx.putImageData(im, 0, 0);
       c = textCache[key] = t;
     }
-    if (shadow) { const s = G.text._sh || (G.text._sh = {}); }
     ctx.drawImage(c, Math.round(X), Math.round(Y));
     return c.width;
   };
