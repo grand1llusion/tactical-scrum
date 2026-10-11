@@ -7,6 +7,9 @@ All notable changes to Tactical Scrum. Versions follow `package.json`.
 - References tab: the 24 Scrum Foundations learning objectives (January 2022), shown as SF 1.1 to SF 4.9 with board links. A qualifying course must cover these as well as the CSM objectives. CSM objectives are now labeled CSM 1.1 and so on; saved ticks still load.
 - Mission board: a Product Goal row above the Sprint Goal row. The mission's goal fills the Product Goal; the Sprint Goal starts empty for Sprint Planning. Mission boards saved by 0.2.0 move their goal up automatically, unless the Sprint Goal was already changed.
 
+### Changed
+- Army mission (Redwater Crossing): now a deliberate crossing on the night of Day 9 instead of a 72-hour hasty crossing, so the course's three Sprints can be three days each.
+
 ### Fixed
 - Empiricism dot vote and Scrum values: the column hint said shift-click adds a dot. A click on "+ dot" adds one; right-click or shift-click removes one. Boards saved by 0.2.0 pick up the corrected hint.
 
