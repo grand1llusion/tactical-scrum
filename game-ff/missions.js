@@ -28,7 +28,7 @@
     { key: 'sue', name: 'Sue', job: 'Stakeholder', hp: 62, atk: 8, spd: 0.9, skills: [['Feedback', 'values', 40, 'one'], ['Openness', 'values', 36, 'heal']] },
   ];
   M.missions = [
-    { id: 'm1', title: 'Sprint Zero', blurb: 'Your first Sprint. Chase the Impediments out of the Academy.', steps: [
+    { id: 'm1', title: 'Sprint Zero', blurb: 'Clear the Impediments out.', steps: [
       { say: ['Kade', 'Welcome to Sprint Zero! The sprint where nothing is delivered and everything is estimated.'] },
       { say: ['Pia', 'The Backlog is a mess. Somebody ordered it by "vibes".'] },
       { say: ['Dana', 'Also, something is blocking the door. It looks like a rock with a grudge.'] },
@@ -45,6 +45,6 @@
       { say: ['Manager Max', '...Fine. Maybe the team can self-manage. I will trust the process.'] },
       { end: true },
     ] },
-    { id: 'm2', title: 'Mission 2', blurb: 'Coming soon: bring your own mission scripts.', locked: true, steps: [] },
+    { id: 'm2', title: 'Mission 2', blurb: 'Coming soon: your scripts.', locked: true, steps: [] },
   ];
 })();

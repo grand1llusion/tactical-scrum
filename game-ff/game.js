@@ -290,7 +290,7 @@
       const y = 119 + i * 9, act = B.active === h;
       if (act) drawCursor(119, y + 1);
       G.text(ctx, h.name, 125, y, h.hp <= 0 ? '#a04a3a' : '#2b2118');
-      G.text(ctx, h.hp + '/' + h.max, 150, y, h.hp <= 0 ? '#a04a3a' : '#2b2118');
+      G.text(ctx, h.hp + '/' + h.max, 156, y, h.hp <= 0 ? '#a04a3a' : '#2b2118');
       R('#1a1610', 190, y + 1, 41, 5); R('#4a4a4a', 191, y + 2, 39, 3);
       R(h.gauge >= 100 ? '#ffd84a' : '#4aa3ff', 191, y + 2, Math.round(39 * h.gauge / 100), 3);
     });
@@ -310,14 +310,14 @@
     for (let i = 0; i < 40; i++) R('#fff3c0', (i * 61) % 240, (i * 17) % 60, 1, 1);
     bigText('BACKLOG QUEST', 120, 6, 3, '#ffe9a8'); bigText('FRONT LINE EDITION', 120, 34, 1, '#f08a3a');
     const missions = FF.missions;
-    G.box(ctx, 14, 50, 212, 70, true);
+    G.box(ctx, 14, 48, 212, 74, true);
     missions.forEach((m, i) => {
-      const y = 57 + i * 17, sel = ui.title.sel === i, col = m.locked ? '#8a7a5a' : '#f3ead0';
+      const y = 56 + i * 20, sel = ui.title.sel === i, col = m.locked ? '#8a7a5a' : '#f3ead0';
       if (sel) drawCursor(21, y + 1);
       G.text(ctx, (S.done[m.id] ? '* ' : '') + m.title, 32, y, col);
-      G.text(ctx, G.wrap(m.blurb, 190)[0], 32, y + 8, '#a89a78');
+      G.text(ctx, m.blurb, 32, y + 8, '#a89a78');
     });
-    const ci = missions.length, y = 57 + ci * 17 + 2;
+    const ci = missions.length, y = 56 + ci * 20 + 2;
     if (ui.title.sel === ci) drawCursor(21, y + 1);
     G.text(ctx, 'Uniform: < ' + FF.costumes[S.costume].label + ' >', 32, y, '#f3ead0');
     S.party = S.party.length ? S.party : [];
