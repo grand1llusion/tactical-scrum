@@ -46,7 +46,7 @@
   /* ---------- dialogue / menus / quiz ---------- */
   async function say(str, opts) {
     opts = opts || {};
-    const lines = G.wrap(str, 40), pages = [];
+    const lines = G.wrap(str, 206), pages = [];
     for (let i = 0; i < lines.length; i += 3) pages.push(lines.slice(i, i + 3));
     for (const pg of pages) {
       ui.text = { lines: pg, shown: 0, total: pg.join('').length, timer: 0, auto: opts.auto || 0 };
@@ -369,7 +369,7 @@
 
   async function partyMenu(forced) {
     for (;;) {
-      const labels = S.party.map((m) => spOf(m).name.padEnd(12) + 'Lv' + m.lv + ' ' + m.hp + '/' + m.max);
+      const labels = S.party.map((m) => spOf(m).name + '  Lv' + m.lv + '  HP ' + m.hp + '/' + m.max);
       const c = await menu(labels, { x: 6, y: 8, w: 168, cancel: !forced });
       if (c < 0) return false;
       const m = S.party[c];
@@ -447,7 +447,7 @@
     const m = ui.menu;
     if (m && m.battle) {
       G.box(ctx, 4, 112, 232, 44);
-      if (m.prompt) { G.wrap(m.prompt, 18).forEach((ln, i) => G.text(ctx, ln, 14, 122 + i * 12)); }
+      if (m.prompt) { G.wrap(m.prompt, 112).forEach((ln, i) => G.text(ctx, ln, 14, 122 + i * 12)); }
       if (m.moves) {
         // moves menu: left side shows detail of selected
         const mv = m.moves[m.sel];
@@ -466,7 +466,7 @@
     if (q) {
       G.box(ctx, 4, 40, 232, 118);
       G.text(ctx, 'SCRUM CHECK: ' + q.q.topic.toUpperCase(), 14, 46, '#8a7448');
-      G.wrap(q.q.q, 40).slice(0, 3).forEach((ln, i) => G.text(ctx, ln, 14, 58 + i * 11));
+      G.wrap(q.q.q, 212).slice(0, 3).forEach((ln, i) => G.text(ctx, ln, 14, 58 + i * 11));
       q.opts.forEach((o, i) => {
         const y = 94 + i * 15;
         if (q.reveal) { if (i === q.correct) R('#b8ecb0', 10, y - 2, 220, 13); else if (i === q.sel) R('#f0b0a8', 10, y - 2, 220, 13); }
@@ -478,9 +478,9 @@
   }
 
   function bigText(str, x, y, sc, color) {
-    const [c, cc] = [document.createElement('canvas')]; c.width = str.length * 6 + 4; c.height = 12;
-    const x2 = c.getContext('2d'); G.text(x2, str, 1, 0, color);
-    ctx.drawImage(c, 0, 0, c.width, c.height, Math.round(x - (c.width * sc) / 2), y, c.width * sc, c.height * sc);
+    const w = G.measure(str) + 2, c = document.createElement('canvas'); c.width = w; c.height = 9;
+    G.text(c.getContext('2d'), str, 1, 0, color);
+    ctx.drawImage(c, 0, 0, w, 9, Math.round(x - (w * sc) / 2), y, w * sc, 9 * sc);
   }
 
   function drawTitle() {
@@ -488,12 +488,11 @@
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
     for (let i = 0; i < 40; i++) R('#fff3c0', (i * 61) % 240, (i * 17) % 70, 1, 1);
     for (let i = 0; i < 8; i++) R('#3a2a1a', i * 34 - (S.t / 4) % 34, 84 - (i % 3) * 6, 34, 40);
-    ['sprintling', 'backlogger', 'standupper'].forEach((id, i) => { const bob = Math.round(Math.sin(S.t / 14 + i * 2) * 3); ctx.drawImage(G.monster(DATA.species[id], false), 40 + i * 64, 94 + bob - 8, 48, 48); });
+    ['sprintling', 'backlogger', 'standupper'].forEach((id, i) => { const bob = Math.round(Math.sin(S.t / 14 + i * 2) * 3); ctx.drawImage(G.monster(DATA.species[id], false), 40 + i * 64, 104 + bob - 6, 48, 48); });
     bigText('TACTICAL SCRUM', 120, 16, 3, '#ffe9a8'); bigText('BACKLOG QUEST', 120, 52, 2, '#f08a3a');
     const opts = hasSave() ? ['CONTINUE', 'NEW GAME'] : ['NEW GAME'];
-    G.box(ctx, 80, 84, 80, opts.length * 12 + 10, true);
-    opts.forEach((o, i) => { if (ui.title.sel === i && Math.floor(S.t / 20) % 2 === 0 || ui.title.sel === i) drawCursor(88, 92 + i * 12); G.text(ctx, o, 98, 90 + i * 12, '#f3ead0'); });
-    G.text(ctx, 'A prototype slice', 78, 146, '#f3ead0');
+    G.box(ctx, 84, 76, 72, opts.length * 12 + 10, true);
+    opts.forEach((o, i) => { if (ui.title.sel === i) drawCursor(92, 84 + i * 12); G.text(ctx, o, 102, 82 + i * 12, '#f3ead0'); });
   }
 
   async function titleLoop() {
