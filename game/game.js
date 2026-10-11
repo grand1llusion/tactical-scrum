@@ -408,7 +408,7 @@
 
   function drawInfo(x, y, name, lv, hp, max, withNum, xpFrac) {
     G.box(ctx, x, y, 104, withNum ? 34 : 26, true);
-    G.text(ctx, name, x + 6, y + 4, '#f3ead0'); G.text(ctx, 'Lv' + lv, x + 70, y + 4, '#f3ead0');
+    G.text(ctx, name, x + 6, y + 4, '#f3ead0'); G.text(ctx, 'Lv' + lv, x + 98 - G.measure('Lv' + lv), y + 4, '#f3ead0');
     G.text(ctx, 'HP', x + 6, y + 14, '#f0c030'); G.bar(ctx, x + 22, y + 17, 72, Math.max(0, hp / max));
     if (withNum) { G.text(ctx, Math.max(0, Math.ceil(hp)) + '/' + max, x + 56, y + 21, '#f3ead0'); R('#1a1610', x + 6, y + 30, 92, 2); R('#4aa3ff', x + 6, y + 30, Math.round(92 * Math.min(1, xpFrac)), 2); }
   }
@@ -451,7 +451,7 @@
       if (m.moves) {
         // moves menu: left side shows detail of selected
         const mv = m.moves[m.sel];
-        G.text(ctx, 'Topic: ' + mv[1], 164, 120, '#6b5a3a'); G.text(ctx, 'Power: ' + mv[2], 164, 132, '#6b5a3a'); G.text(ctx, 'Answer to land it', 164, 144, '#6b5a3a');
+        G.text(ctx, mv[1].toUpperCase(), 168, 122, '#8a7448'); G.text(ctx, 'Power ' + mv[2], 168, 134, '#6b5a3a'); G.text(ctx, 'Quiz move', 168, 146, '#6b5a3a');
         m.opts.forEach((o, i) => { const cx = 18 + (i % 2) * 70, cy = 120 + Math.floor(i / 2) * 16; if (i === m.sel) drawCursor(cx - 8, cy + 1); G.text(ctx, o, cx, cy); });
       } else {
         G.box(ctx, 132, 112, 104, 44);
