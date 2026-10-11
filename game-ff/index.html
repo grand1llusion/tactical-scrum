@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>Backlog Quest: Front Line Edition</title>
+<style>
+html,body{margin:0;height:100%;background:#14110c;color:#e8d9b0;font-family:monospace;overflow:hidden}
+#wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}
+canvas{image-rendering:pixelated;image-rendering:crisp-edges;width:min(100vw,calc((100vh - 150px)*1.5));aspect-ratio:3/2;background:#000;border:4px solid #3b3222;border-radius:6px;box-sizing:border-box}
+#pad{display:flex;gap:40px;margin-top:10px;user-select:none;-webkit-user-select:none}
+#pad button{width:46px;height:46px;border-radius:50%;border:2px solid #6b5a3a;background:#2a2316;color:#e8d9b0;font:bold 16px monospace;touch-action:manipulation}
+#dp{display:grid;grid-template-columns:repeat(3,46px);gap:2px}
+#dp button{border-radius:8px}
+small{opacity:.6;margin-top:6px}
+</style></head><body><div id="wrap">
+<canvas id="c" width="240" height="160"></canvas>
+<div id="pad"><div id="dp"><span></span><button data-k="up">▲</button><span></span><button data-k="left">◀</button><span></span><button data-k="right">▶</button><span></span><button data-k="down">▼</button><span></span></div>
+<div style="display:flex;gap:12px;align-items:center"><button data-k="b">B</button><button data-k="a">A</button></div></div>
+<small>Arrows/WASD move · Z/Enter = A · X = B · M = mute</small></div>
+<script src="gfx.js"></script><script src="audio.js"></script><script src="data.js"></script><script src="missions.js"></script><script src="game.js"></script>
+</body></html>
