@@ -72,6 +72,7 @@ aside h2 { font: 600 12px var(--mono); text-transform: uppercase; letter-spacing
 #mopts button { text-align: left; background: var(--panel2); border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; }
 #mopts button:hover:not(:disabled) { border-color: var(--accent); }
 #mopts button:disabled { opacity: .35; cursor: default; text-decoration: line-through; }
+#mopts button.done:disabled { text-decoration: none; opacity: .6; }
 #mopts button.primary { background: var(--accent); color: #14110c; border-color: var(--accent); font-weight: 600; text-align: center; }
 #mopts label { display: flex; gap: 8px; align-items: flex-start; background: var(--panel2); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; cursor: pointer; }
 #mhelp { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; }

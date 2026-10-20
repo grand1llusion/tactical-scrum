@@ -57,7 +57,7 @@
     tab('hand', 'By hand (1 to 3)'); tab('ai', 'GenAI.mil-assisted (1 to 5)');
     o.append(row);
     if (st.mode === 'ai') {
-      const c = el('button', '', st.checked ? 'Sources checked' : 'Ask GenAI.mil to list each rating\'s source and date'); c.disabled = st.checked; c.onclick = () => { st.checked = true; render(); buttons(); };
+      const c = el('button', st.checked ? 'done' : '', st.checked ? 'Sources checked' : 'Ask GenAI.mil to list each rating\'s source and date'); c.disabled = st.checked; c.onclick = () => { st.checked = true; render(); buttons(); };
       const s = el('button', '', 'Run the sensitivity sweep'); s.onclick = () => { st.swept = true; render(); };
       o.append(c, s);
     }

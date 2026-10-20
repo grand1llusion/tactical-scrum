@@ -26,7 +26,7 @@
     { id: 's1', name: 'S1 Personnel', row: 1, col: 0, floor: 'tile' },
     { id: 'brief', name: 'Briefing room', row: 1, col: 1, floor: 'carpet2', event: 'Planning · Daily Scrum' },
     { id: 's4', name: 'S4 Logistics', row: 1, col: 2, floor: 'concrete' },
-    { id: 's6', name: 'S6 Signal · GenAI.mil', row: 2, col: 0, floor: 'tech' },
+    { id: 's6', name: 'S6 Signal + GenAI.mil', row: 2, col: 0, floor: 'tech' },
     { id: 'eng', name: 'Engineer cell', row: 2, col: 1, floor: 'concrete' },
     { id: 'brk', name: 'Break room', row: 2, col: 2, floor: 'wood', event: 'Retrospective' },
   ];

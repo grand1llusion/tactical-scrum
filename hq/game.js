@@ -111,7 +111,7 @@
     const c = el('div', 'card ' + it.state + (it.state === 'todo' && !depsDone(it) ? ' blocked' : '') + (S.sel === it.id ? ' sel' : ''));
     c.append(el('div', 't', esc(it.title)));
     const who = it.assignee ? (it.assignee === 'genai' ? 'GenAI.mil' : nameOf(it.assignee)) : '';
-    const meta = [MAP.rooms[it.room].name.split(' ·')[0], it.hours + ' h'];
+    const meta = [MAP.rooms[it.room].name.split(' +')[0], it.hours + ' h'];
     if (it.state === 'todo' && !depsDone(it)) meta.push('waiting on ' + it.needs.filter((n) => item(n) && item(n).state !== 'done').map((n) => item(n).title.replace('Reconnoiter ', 'Recon ')).join(', '));
     if (who) meta.push((it.state === 'check' ? 'checker: ' : '') + who);
     if (it.state === 'check' && !it.checker) meta.push('worked by ' + nameOf(it.worker));
@@ -214,7 +214,7 @@
       const c = document.createElement('canvas'); c.width = 16; c.height = 16; const a = MAP.agent(m.id);
       c.getContext('2d').drawImage(G.person(a.look, 0, 0), 0, 0); d.append(c);
       const it = S.items.find((i) => (i.state === 'doing' && i.assignee === m.id) || (i.state === 'check' && i.checker === m.id));
-      const st = it ? (MAP.walking(m.id) ? 'Walking to ' + MAP.rooms[it.room].name.split(' ·')[0] : (it.state === 'check' ? 'Checking: ' : '') + it.title + ' ' + Math.round((it.state === 'doing' ? it.progress / it.hours : it.cprog) * 100) + '%') : 'Free · ' + MAP.rooms[a.room].name.split(' ·')[0];
+      const st = it ? (MAP.walking(m.id) ? 'Walking to ' + MAP.rooms[it.room].name.split(' +')[0] : (it.state === 'check' ? 'Checking: ' : '') + it.title + ' ' + Math.round((it.state === 'doing' ? it.progress / it.hours : it.cprog) * 100) + '%') : 'Free · ' + MAP.rooms[a.room].name.split(' +')[0];
       d.append(el('div', '', '<div class="n">' + esc(m.name) + '</div><div class="s">' + esc(m.role) + ' · ' + esc(st) + '</div>'));
       d.onclick = () => { if (S.sel) assignTo(m.id); else { MAP.select(m.id); if (m.quip) toast('<b>' + esc(m.name) + ':</b> "' + esc(m.quip) + '"'); } };
       r.append(d);
@@ -453,7 +453,7 @@
   async function finish() {
     S.ended = true; S.phase = 'ended'; hud();
     possible(75); if (!S.helpUsed) award(75, 0, 'No help used', 'Help');
-    const pct = Math.round((S.score / Math.max(1, S.possible)) * 100), medal = pct >= 85 ? 'Gold' : pct >= 70 ? 'Silver' : pct >= 50 ? 'Bronze' : 'No medal';
+    const pct = Math.max(0, Math.round((S.score / Math.max(1, S.possible)) * 100)), medal = pct >= 85 ? 'Gold' : pct >= 70 ? 'Silver' : pct >= 50 ? 'Bronze' : 'No medal';
     const ok = remaining() > 48 - 6; // slice: on track if the clock holds near the planned 48 h left
     let best = null; try { best = JSON.parse(localStorage.getItem(BEST) || 'null'); } catch (e) { /* storage may be blocked */ }
     const isBest = !best || S.score > best.score;
