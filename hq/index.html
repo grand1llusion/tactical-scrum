@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Redwater HQ</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header id="top">
+  <div class="brand">REDWATER HQ</div>
+  <div class="chip" id="phase">MDMP 1 · Receipt of mission</div>
+  <div class="chip" id="sprint">Setup</div>
+  <div class="meter"><span class="lbl">Mission clock</span><span id="clock" class="val">72:00</span><span id="clockdelta" class="delta"></span></div>
+  <div class="meter"><span class="lbl">Score</span><span id="score" class="val">0</span><span id="scoredelta" class="delta"></span></div>
+  <div class="spacer"></div>
+  <div class="speed" id="speed"><button data-s="0" title="Pause (space)">II</button><button data-s="1" class="on" title="Normal speed">1x</button><button data-s="3" title="Fast">3x</button></div>
+  <button id="hintbtn" class="ghost" title="A hint costs 10 points">Hint (−10)</button>
+</header>
+<main id="layout">
+  <aside id="left">
+    <h2>Sprint Backlog <span id="goalchip" class="mini"></span></h2>
+    <div id="board"></div>
+    <h2>Product Backlog <span class="mini">ordered by MAJ Dunn (PO)</span></h2>
+    <div id="pbl"></div>
+  </aside>
+  <section id="center">
+    <div id="mapwrap"><canvas id="map" width="480" height="320"></canvas></div>
+    <div id="feed"></div>
+  </section>
+  <aside id="right">
+    <h2>Planning cell</h2>
+    <div id="roster"></div>
+    <h2>Evidence log <span class="mini" id="stripcount">0 of 11</span></h2>
+    <div id="evidence"></div>
+  </aside>
+</main>
+<div id="modal" hidden><div class="panel" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+  <div class="mhead"><span class="chip" id="mtag"></span><span class="who" id="mwho"></span></div>
+  <h3 id="mtitle"></h3>
+  <div id="mbody"></div>
+  <div id="mopts"></div>
+  <div id="mhelp"></div>
+</div></div>
+<div id="toast" hidden></div>
+<script src="gfx.js"></script>
+<script src="data.js"></script>
+<script src="map.js"></script>
+<script src="coa.js"></script>
+<script src="game.js"></script>
+</body></html>
